@@ -1,0 +1,107 @@
+project Plan:
+Step1: requirements gathering and planning 
+
+1.Core funcnalities:
+-account creation (for individual or bussiness)
+-deposite and withdrawal
+-balance inquiry
+-transaction history for each acc
+-interest calculation (for sav acc)
+-overdraft limit (for bussiness acc)
+-simple admin and customer access
+
+Step2: Class Structure
+
+1.Class diagram outline:
+ - Base classes: Person , Account
+ -derived classes: Customer, admin, Sav acc, bussiness acc
+ -transaction, bank
+
+
+Step3: define Classes Method
+
+Person
+Attributs:
+	name (str): Name of person
+	address(str): address of person
+	phone (str): Contact no.
+
+Methods:
+	__init__():Construtor to intializie the person's details
+details
+	get_details(): returns the person's details
+
+
+Account(Abstrsct)
+Attributes:
+-account_number(str): Unique identifier for the acc
+-balance(float):Current balance of acc
+-ownerCustermoer obj:) : Owner of acc
+
+Methods:
+-deposit(ammount): add fund
+-withdraw(amt):deduct funds,ensure no overdrafts ocuurs in general
+-get_balance(): returns curr balance 
+-show _acc_details():displays acc details
+
+
+Customer(Inherits from person)
+
+Attributes:
+-acc (list of acc obj): all acc linked to customer
+
+methods:
+-add_acc(account): adds a new acc to customer's acc list
+-remove_account(account_number): removes an ac from the customers list
+-get_acc_summary(): Displays a summary of all acc
+
+
+Admin (inherits from person)
+
+Attributes:
+-employee_id(str): Unique indetifier for the admin
+
+Methods:
+-approve_acc(customer, acc): approves and activates a new acc
+-view_all_customers():provides a summary of all bank customer
+
+
+SavingsAccounts (Inherits from acc)
+
+Attributes:
+	interest_rate(float): interest rate for saving acc
+Methods:
+	apply_interest(): calculates and applies interest to acc balance periodically
+------------------------------------------------------------------------------------------
+BussinessAccount(inherits from acc)
+
+Attributes:
+	overdraft_limit(float): Limit for overdrafts
+Methods:
+overrride withdraw(amt): allows withdrawl within the 
+
+
+
+Transactions:
+
+Attributes:
+-transaction_id(str): unique indentifier for the transaction
+-transacction_type(str): Type of transaction("Deposite" or "Withdrawal')
+-amount(float): Amount transacted
+-date(datetime): date of the transaction
+
+Methods:
+-get_transactions_details(): Returns the transaction detail
+----------------------------------------------------------------------
+BANK
+
+
+Attributes:
+-customers(lists of customer obj): all bank customers
+-admins(lists of admin obj): all bank admins
+
+Methods:
+-create_customer_acc():Inherites a new acc creation for a customer
+-delete_custoomer_acc():deletes a customers acc
+-view_trans_history(acc_num):returns all transations for a given acc 
+-find_customer_by_account(acc_num): finds n retuns the customer associated with an acc
